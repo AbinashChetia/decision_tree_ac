@@ -81,8 +81,8 @@ class DecisionTreeAC:
 
     def printNode(self, parent_key, node, depth):
         if node.isLeaf:
-            print((depth-1) * ' | ', f'|-[{parent_key} -> {node.label}]')
+            print((depth-1) * ' | ', f'|-[{parent_key} -> Label {node.label}]')
         else:
-            print((depth-1) * ' | ', f'|-({parent_key} -> {node.splitAttr})')
+            print((depth-1) * ' | ', f'|-({parent_key} -> Attr {node.splitAttr})')
             for k, child in node.children.items():
                 self.printNode(k, child, depth + 1)
