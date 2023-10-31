@@ -18,15 +18,8 @@ def splitTrainTest(x, y, train_ratio=0.8):
     test_y = df.iloc[train_size:, -1].reset_index(drop=True)
     return train_x, train_y, test_x, test_y
 
-def discretize(df, cols=None, q=10):
-    if cols is None or not isinstance(cols, list):
-        raise ValueError('Attributes to be discretized must be specidied in a list!')
-    if not set(cols).issubset(set(df.columns)):
-        raise ValueError('Specified attributes not in the dataframe!')
-    data = df.copy()
-    for col in cols:
-        data[col] = pd.qcut(data[col], q=q, labels=False, duplicates='drop')
-    return data
+def discretize(df, cols=None):
+    return df
 
 def get_performance_measure(y, pred):
     if np.unique(y).shape[0] == 2:
